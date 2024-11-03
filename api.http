@@ -1,0 +1,3 @@
+### Get some data
+
+GET http://localhost:4000/data/models

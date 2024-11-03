@@ -1,4 +1,4 @@
-import { readJSON } from "../utils/read-json";
+import { readJSON } from "../utils/read-json.js";
 
 export class GetData{
     static async getProfileData(){

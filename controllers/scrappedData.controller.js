@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes"
-import { GetData } from "../models/getData"
+import { GetData } from "../models/getData.js"
 
 export class ScrappedDataController {
     async modelsData(req, res, next){
