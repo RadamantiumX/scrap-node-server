@@ -10,7 +10,10 @@ export class ScrappedDataController {
            res.status(StatusCodes.OK).json({ data:data })
 
         }catch(err){
-            return console.log(err)
+            return next({
+                status:StatusCodes.BAD_REQUEST,
+                message: 'Something went wrong'
+            })
         }
     }
 }
