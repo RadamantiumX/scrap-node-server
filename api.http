@@ -1,2 +1,2 @@
 ### GETTING SOME DATA
-GET http://localhost:4000/data/model
+GET http://localhost:4000/data/model/1
