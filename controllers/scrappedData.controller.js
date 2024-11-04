@@ -4,13 +4,13 @@ import { GetData } from "../models/getData.js"
 export class ScrappedDataController {
     async modelsData(req, res, next){
         try{
+
            const data = await GetData.getProfileData()
-           res.status(StatusCodes.OK).json({ data })
+           
+           res.status(StatusCodes.OK).json({ data:data })
+
         }catch(err){
-            return next({
-                status: StatusCodes.BAD_REQUEST,
-                message: "Something went Wrong"
-            })
+            return console.log(err)
         }
     }
 }
