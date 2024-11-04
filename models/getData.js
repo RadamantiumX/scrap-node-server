@@ -11,4 +11,16 @@ export class GetData{
             console.error(error)
          }
     }
+
+    static async documentCount(){
+        try{
+            const db = await connect()
+            const count = await db.countDocuments()
+            return count
+
+        }catch(error){
+            console.error('Failed to request DB')
+            console.error(error)
+        }
+    }
 }
