@@ -7,7 +7,7 @@ export class ScrappedDataController {
            const page = parseInt(req.params.page)
            const fixedIndex = page - 1
            const limit = 9
-           const data = await GetData.getProfileData(limit, fixedIndex)
+           const data = await GetData.getCoverData(limit, fixedIndex)
            const count = await GetData.documentCount()
            const totalPages = Math.ceil(count / limit)
            const pagination = {
@@ -16,7 +16,7 @@ export class ScrappedDataController {
               totalPages: totalPages,
               sizePage: limit
            }
-           
+          
            res.status(StatusCodes.OK).json({ data:data, pagination: pagination })
 
         }catch(err){
