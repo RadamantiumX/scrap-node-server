@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes"
 import { GetData } from "../models/getData.js"
 
 export class ScrappedDataController {
-    async modelsData(req, res, next){
+    async coverData(req, res, next){
         try{
            const page = parseInt(req.params.page)
            const fixedIndex = page - 1
@@ -20,6 +20,20 @@ export class ScrappedDataController {
            res.status(StatusCodes.OK).json({ data:data, pagination: pagination })
 
         }catch(err){
+            return next({
+                status:StatusCodes.BAD_REQUEST,
+                message: 'Something went wrong'
+            })
+        }
+    }
+
+    async contentData(req, res, next){
+        try{
+            const name = req.params.name
+            const url = `https://www.twpornstars.com/${name}`
+            const data = await GetData.getContentData(url)
+            res.status(StatusCodes.OK).json(data)
+        }catch(error){
             return next({
                 status:StatusCodes.BAD_REQUEST,
                 message: 'Something went wrong'

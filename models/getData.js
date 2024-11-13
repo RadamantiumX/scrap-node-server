@@ -12,6 +12,17 @@ export class GetData{
          }
     }
 
+    static async getContentData(url){
+       try{
+        const db = await connect()
+        const data = await db.findOne({ url: url })
+        return data
+       }catch(error){
+        console.log('Failed to request DB')
+        console.error(error)
+       }
+    }
+
     static async documentCount(){
         try{
             const db = await connect()

@@ -1,2 +1,6 @@
 ### GETTING SOME DATA
 GET http://localhost:4000/data/model/1
+
+
+### Getting more data
+GET http://localhost:4000/data/content/TeannaTrump
