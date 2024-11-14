@@ -4,7 +4,7 @@ import { ScrappedDataController } from "../controllers/scrappedData.controller.j
 const scrappedDataRouter = Router()
 const scrappedDataController = new ScrappedDataController()
 
-scrappedDataRouter.get('/model/:page', scrappedDataController.coverData)
+scrappedDataRouter.get('/cover/:page', scrappedDataController.coverData)
 scrappedDataRouter.get('/content/:name', scrappedDataController.contentData)
 
 export default scrappedDataRouter

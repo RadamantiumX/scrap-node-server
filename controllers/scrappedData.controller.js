@@ -32,6 +32,9 @@ export class ScrappedDataController {
             const name = req.params.name
             const url = `https://www.twpornstars.com/${name}`
             const data = await GetData.getContentData(url)
+            if(!data){
+                res.status(StatusCodes.OK).json(null)
+            }
             res.status(StatusCodes.OK).json(data)
         }catch(error){
             return next({
