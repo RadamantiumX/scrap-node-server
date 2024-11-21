@@ -1,21 +1,11 @@
 ### GETTING SOME DATA
 GET http://localhost:4000/data/cover/1
 
-
 ### Getting more data
 GET http://localhost:4000/data/content/TeannaTrump
 
 ### Getting Media data 
 GET http://localhost:4000/data/media/Maplestar_Art/3
 
-### Twitter Caps Days
-GET https://api.x.com/2/usage/tweets
-Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAEa8wgEAAAAAZd5v1%2F3%2BDSzdRlAQkb%2FoIAbEsAw%3D1JHPTO3er6DRnoWTwclEaCTxXKAp5gmgN0AwW3ahFhvjHiw1Yv
-
-### Twitter User info
-GET https://api.x.com/2/users/by?usernames=TeannaTrump&user.fields=created_at&expansions=pinned_tweet_id&tweet.fields=author_id,created_at
-Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAEa8wgEAAAAAZd5v1%2F3%2BDSzdRlAQkb%2FoIAbEsAw%3D1JHPTO3er6DRnoWTwclEaCTxXKAp5gmgN0AwW3ahFhvjHiw1Yv
-
-### Twitter Timelines
-GET https://api.x.com/2/users/2278455931/tweets?tweet.fields=created_at&expansions=author_id&user.fields=created_at&max_results=5
-Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAEa8wgEAAAAAZd5v1%2F3%2BDSzdRlAQkb%2FoIAbEsAw%3D1JHPTO3er6DRnoWTwclEaCTxXKAp5gmgN0AwW3ahFhvjHiw1Yv
+### Searching Data
+GET http://localhost:4000/data/search/b/1

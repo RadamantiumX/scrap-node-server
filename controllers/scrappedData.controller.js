@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes"
 import { GetData } from "../models/getData.js"
+import { firstLetterToUpperCase } from "../helpers/firstLetterUpperCase.js"
 
 export class ScrappedDataController {
     async coverData(req, res, next){
@@ -59,4 +60,32 @@ export class ScrappedDataController {
             })
         }
     }
+   async filterData(req, res, next){
+      try{
+       const query = req.params.query
+       const page = parseInt(req.params.page)
+       const fixedIndex = page - 1
+       const limit = 9
+       const formattedRequest = firstLetterToUpperCase(query)
+       const results = await GetData.getFilterData(formattedRequest,limit, fixedIndex)
+       if(results.length === 0){
+        res.status(StatusCodes.OK).json({ message: 'No results founded...' })
+       }
+       const count = results.length
+       const totalPages = Math.ceil(count / limit)
+       const pagination = {
+          currentPage: page,
+          totalResults: count,
+          totalPages: totalPages,
+          sizePage: limit
+       }
+       res.status(StatusCodes.OK).json({data:results, pagination: pagination})
+
+       }catch(error){
+        return next({
+            status:StatusCodes.BAD_REQUEST,
+            message: 'Something went wrong'
+        })
+      }
+   } 
 }
