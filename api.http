@@ -5,6 +5,9 @@ GET http://localhost:4000/data/cover/1
 ### Getting more data
 GET http://localhost:4000/data/content/TeannaTrump
 
+### Getting Media data 
+GET http://localhost:4000/data/media/Maplestar_Art/3
+
 ### Twitter Caps Days
 GET https://api.x.com/2/usage/tweets
 Authorization: Bearer AAAAAAAAAAAAAAAAAAAAAEa8wgEAAAAAZd5v1%2F3%2BDSzdRlAQkb%2FoIAbEsAw%3D1JHPTO3er6DRnoWTwclEaCTxXKAp5gmgN0AwW3ahFhvjHiw1Yv

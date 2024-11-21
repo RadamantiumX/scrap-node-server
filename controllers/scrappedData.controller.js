@@ -30,12 +30,28 @@ export class ScrappedDataController {
     async contentData(req, res, next){
         try{
             const name = req.params.name
-            const url = `https://www.twpornstars.com/${name}`
+            const url = `${process.env.SOURCE_URL}/${name}` // Using the complete URL to optmized the response
             const data = await GetData.getContentData(url)
             if(!data){
                 res.status(StatusCodes.OK).json(null)
             }
             res.status(StatusCodes.OK).json(data)
+        }catch(error){
+            return next({
+                status:StatusCodes.BAD_REQUEST,
+                message: 'Something went wrong'
+            })
+        }
+    }
+    async mediaData(req, res, next){
+        try{
+            const {url_name, src_id } = req.params
+            const url = `${process.env.SOURCE_URL}/${url_name}` // Using the complete URL to 
+            const data = await GetData.getMediaData(url)
+            if(!data){
+                res.status(StatusCodes.OK).json(null)
+            }
+           res.status(StatusCodes.OK).json({ id: data.id, name: data.name,embed:data.source[parseInt(src_id)].embed, post_text: data.source[parseInt(src_id)].post_text, tags: data.tags })
         }catch(error){
             return next({
                 status:StatusCodes.BAD_REQUEST,
