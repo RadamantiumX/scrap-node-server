@@ -55,7 +55,7 @@ export class ScrappedDataController {
             if(!data){
                 res.status(StatusCodes.OK).json(null)
             }
-           res.status(StatusCodes.OK).json({ id: data.id, name: data.name,embed:data.source[parseInt(src_id)].embed, post_text: data.source[parseInt(src_id)].post_text, tags: data.tags })
+           res.status(StatusCodes.OK).json({ id: data.id, name: data.name,embed:data.source[parseInt(src_id)].embed, post_text: data.source[parseInt(src_id)].post_text, tags: data.tags, count: data.source.length })
         }catch(error){
             return next({
                 status:StatusCodes.BAD_REQUEST,
