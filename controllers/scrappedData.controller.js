@@ -46,6 +46,9 @@ export class ScrappedDataController {
     }
     async mediaData(req, res, next){
         try{
+            /**
+             * @param req.src_id --> image index
+             */
             const {url_name, src_id } = req.params
             const url = `${process.env.SOURCE_URL}/${url_name}` // Using the complete URL to 
             const data = await GetData.getMediaData(url)
