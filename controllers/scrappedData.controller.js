@@ -36,7 +36,7 @@ export class ScrappedDataController {
             if(!data){
                 res.status(StatusCodes.OK).json(null)
             }
-            res.status(StatusCodes.OK).json(data)
+            res.status(StatusCodes.OK).json({data})
         }catch(error){
             return next({
                 status:StatusCodes.BAD_REQUEST,
@@ -55,7 +55,7 @@ export class ScrappedDataController {
             if(!data){
                 res.status(StatusCodes.OK).json(null)
             }
-           res.status(StatusCodes.OK).json({ id: data.id, name: data.name,embed:data.source[parseInt(src_id)].embed, post_text: data.source[parseInt(src_id)].post_text, tags: data.tags, count: data.source.length })
+           res.status(StatusCodes.OK).json({data:{ id: data.id, name: data.name,embed:data.source[parseInt(src_id)].embed, post_text: data.source[parseInt(src_id)].post_text, tags: data.tags, count: data.source.length }})
         }catch(error){
             return next({
                 status:StatusCodes.BAD_REQUEST,
@@ -72,7 +72,7 @@ export class ScrappedDataController {
        const formattedRequest = firstLetterToUpperCase(query)
        const results = await GetData.getFilterData(formattedRequest,limit, fixedIndex)
        if(results.length === 0){
-        res.status(StatusCodes.OK).json({ message: 'No results founded...' })
+        res.status(StatusCodes.OK).json({ data: 'No results founded...' })
        }
        const count = results.length
        const totalPages = Math.ceil(count / limit)
