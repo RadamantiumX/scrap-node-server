@@ -91,4 +91,21 @@ export class ScrappedDataController {
         })
       }
    } 
+   async urlData(req, res, next){
+    try{
+        const data = await GetData.getUrlData()
+        const gettingUrl = data.map((item, index)=>{
+           return item.url.slice(27)
+        })
+        
+        const count = data.length
+        res.status(StatusCodes.OK).json({data:gettingUrl, count:count})
+
+    }catch(error){
+        return next({
+            status:StatusCodes.BAD_REQUEST,
+            message: 'Something went wrong'
+        }) 
+    }
+   }
 }

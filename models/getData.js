@@ -42,6 +42,16 @@ export class GetData{
             console.error(error)
         }
     }
+    static async getUrlData(){
+        try{
+            const db = await connect()
+            const data = db.find().project({url:1})
+            return data.toArray()
+        }catch(error){
+            console.log('Failed to request DB')
+            console.error(error)
+        }
+    }
     static async documentCount(){
         try{
             const db = await connect()

@@ -9,3 +9,6 @@ GET http://localhost:4000/data/media/Maplestar_Art/3
 
 ### Searching Data
 GET http://localhost:4000/data/search/b/1
+
+### Getting URL for sitemap
+GET http://localhost:4000/data/url
