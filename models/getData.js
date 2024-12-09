@@ -42,6 +42,16 @@ export class GetData{
             console.error(error)
         }
     }
+    static async getFilterDataTags(tag, per_page, current_page){
+        try{
+            const db = await connect()
+            const data = db.find({ tags: tag }).skip(per_page * current_page).limit(per_page).project({ id:1, name: 1, url:1, thumb:1 })
+            return data.toArray()
+        }catch(error){
+            console.log('Failed to request DB')
+            console.error(error)
+        }
+    }
     static async getUrlData(){
         try{
             const db = await connect()

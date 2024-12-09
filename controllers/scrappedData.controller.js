@@ -65,12 +65,13 @@ export class ScrappedDataController {
     }
    async filterData(req, res, next){
       try{
+       
        const query = req.params.query
        const page = parseInt(req.params.page)
+       const formattedParam = firstLetterToUpperCase(query)
        const fixedIndex = page - 1
        const limit = 9
-       const formattedRequest = firstLetterToUpperCase(query)
-       const results = await GetData.getFilterData(formattedRequest,limit, fixedIndex)
+       const results = await GetData.getFilterData(formattedParam, limit, fixedIndex)
        if(results.length === 0){
         res.status(StatusCodes.OK).json({ data: 'No results founded...' })
        }
@@ -91,6 +92,34 @@ export class ScrappedDataController {
         })
       }
    } 
+   async filterDataTags(req, res, next){
+    try{
+     
+     const tag = req.params.tag
+     const page = parseInt(req.params.page)
+     const fixedIndex = page - 1
+     const limit = 9
+     const results = await GetData.getFilterDataTags(tag, limit, fixedIndex)
+     if(results.length === 0){
+      res.status(StatusCodes.OK).json({ data: 'No results founded...' })
+     }
+     const count = results.length
+     const totalPages = Math.ceil(count / limit)
+     const pagination = {
+        currentPage: page,
+        totalResults: count,
+        totalPages: totalPages,
+        sizePage: limit
+     }
+     res.status(StatusCodes.OK).json({data:results, pagination: pagination})
+
+     }catch(error){
+      return next({
+          status:StatusCodes.BAD_REQUEST,
+          message: 'Something went wrong'
+      })
+    }
+ } 
    async urlData(req, res, next){
     try{
         const data = await GetData.getUrlData()

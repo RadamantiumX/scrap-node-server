@@ -8,6 +8,7 @@ scrappedDataRouter.get('/cover/:page', scrappedDataController.coverData)
 scrappedDataRouter.get('/content/:name', scrappedDataController.contentData)
 scrappedDataRouter.get('/media/:url_name/:src_id', scrappedDataController.mediaData)
 scrappedDataRouter.get('/search/:query/:page', scrappedDataController.filterData)
+scrappedDataRouter.get('/tag/:tag/:page', scrappedDataController.filterDataTags)
 scrappedDataRouter.get('/url', scrappedDataController.urlData)
 
 export default scrappedDataRouter

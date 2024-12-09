@@ -12,3 +12,6 @@ GET http://localhost:4000/data/search/b/1
 
 ### Getting URL for sitemap
 GET http://localhost:4000/data/url
+
+### Searching Data  for Tag
+GET http://localhost:4000/data/tag/Nudes/1
